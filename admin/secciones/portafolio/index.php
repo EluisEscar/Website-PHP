@@ -49,7 +49,7 @@
                             <th scope="col">Titulo</th>
                             <th scope="col">Subtitulo</th>
                             <th scope="col">Imagen</th>
-                            <th scope="col">Descripcion</th>
+                            <th scope="col">Descripción</th>
                             <th scope="col">Cliente</th>
                             <th scope="col">Categoria</th>
                             <th scope="col">URL</th>
@@ -62,7 +62,7 @@
                             <td><?php echo $registros['id'];?></td>
                             <td><?php echo $registros['titulo'];?></td>
                             <td><?php echo $registros['subtitulo'];?></td>
-                            <td><?php echo $registros['imagen'];?></td>
+                            <td><img width="50" src="../../../assets/img/portfolio/<?php echo $registros['imagen'];?>" alt=""></td>
                             <td><?php echo $registros['descripcion'];?></td>
                             <td><?php echo $registros['cliente'];?></td>
                             <td><?php echo $registros['categoria'];?></td>

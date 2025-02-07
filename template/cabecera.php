@@ -15,13 +15,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Configuraciones</a>
+                <a class="nav-link active" aria-current="page" href="/website/admin/secciones/configuraciones/index.php">Configuraciones</a>
                 <a class="nav-link" href="/website/admin/secciones/entradas/index.php">Entradas</a>
                 <a class="nav-link" href="/website/admin/secciones/equipo/index.php">Equipo</a>
                 <a class="nav-link" href="/website/admin/secciones/portafolio/index.php">Portafolio</a>
                 <a class="nav-link" href="/website/admin/secciones/servicios/index.php">Servicios</a>
-                <a class="nav-link" href="#">Usuarios</a>
-                <a class="nav-link" href="#">Cerrar Sesión</a>
             </div>
         </div>
     </nav>
+<body>

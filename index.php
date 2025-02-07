@@ -13,6 +13,13 @@
     $sentencia->execute();
     $listaEntradas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
+    $sentencia = $conexion->query("SELECT * FROM `tbl_equipo`");
+    $sentencia->execute();
+    $listaEquipo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+    $sentencia = $conexion->query("SELECT * FROM `tbl_configuraciones`");
+    $sentencia->execute();
+    $listaConfiguraciones = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +29,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>CodeNova</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -44,11 +51,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portafolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team">Equipo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contáctanos</a></li>
                     </ul>
                 </div>
             </div>
@@ -56,63 +63,50 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Welcome To Our Studio!</div>
-                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+                <div class="masthead-subheading"><?php echo $listaConfiguraciones[0]['valor']?></div>
+                <div class="masthead-heading text-uppercase"><?php echo $listaConfiguraciones[1]['valor']?></div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#services"><?php echo $listaConfiguraciones[2]['valor']?></a>
             </div>
         </header>
         <!-- Services-->
         <section class="page-section" id="services">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase"><?php echo $listaConfiguraciones[3]['valor']?></h2>
+                    <h3 class="section-subheading text-muted"><?php echo $listaConfiguraciones[4]['valor']?></h3>
                 </div>
                 <div class="row text-center">
+                    <?php foreach ($listaServicios as $registros) { ?>                   
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">E-Commerce</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                        <h4 class="my-3"><?php echo $registros['titulo']; ?></h4>
+                        <p class="text-muted"><?php echo $registros['descripcion']; ?></p>
                     </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Responsive Design</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Web Security</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </section>
+
         <!-- Portfolio Grid-->
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Portafolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase"><?php echo $listaConfiguraciones[5]['valor']?></h2>
+                    <h3 class="section-subheading text-muted"><?php echo $listaConfiguraciones[6]['valor']?></h3>
                 </div>
                 <div class="row">
                     <?php foreach($listaPortafolio as $registros) {?>
                     <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 1-->
+                        <!-- Portfolio item -->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1<?php echo $registros['id']?>">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/<?php $registros['imagen']?>" alt="..." />
+                                <img class="img-fluid" src="assets/img/portfolio/<?php echo $registros['imagen']?>" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading"><?php echo $registros['titulo']?></div>
@@ -162,8 +156,8 @@
         <section class="page-section" id="about">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase"><?php echo $listaConfiguraciones[7]['valor']?></h2>
+                    <h3 class="section-subheading text-muted"><?php echo $listaConfiguraciones[8]['valor']?></h3>
                 </div>
                 <ul class="timeline">
                     <?php
@@ -205,20 +199,26 @@
         <section class="page-section bg-light" id="team">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase"><?php echo $listaConfiguraciones[9]['valor']?></h2>
+                    <h3 class="section-subheading text-muted"><?php echo $listaConfiguraciones[10]['valor']?></h3>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
-                            <h4>Parveen Anand</h4>
-                            <p class="text-muted">Lead Designer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                <div class="row justify-content-center"> <!-- Centra los elementos -->
+                    <?php foreach($listaEquipo as $registros) { ?>
+                        <div class="col-md-6 col-lg-4 d-flex justify-content-center mb-4"> <!-- Se adapta automáticamente -->
+                            <div class="team-member text-center">
+                                <img class="mx-auto rounded-circle" src="assets/img/team/<?php echo $registros['imagen']?>" alt="..." />
+                                <h4><?php echo $registros['nombre']?></h4>
+                                <p class="text-muted"><?php echo $registros['rol']?></p>
+                                <div>
+                                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
+                </div>
+                    <!--
                     <div class="col-lg-4">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
@@ -239,9 +239,10 @@
                             <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
+                    -->
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted"><?php echo $listaConfiguraciones[11]['valor']?></p></div>
                 </div>
             </div>
         </section>
@@ -268,8 +269,8 @@
         <section class="page-section" id="contact">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase"><?php echo $listaConfiguraciones[12]['valor']?></h2>
+                    <h3 class="section-subheading text-muted"><?php echo $listaConfiguraciones[13]['valor']?></h3>
                 </div>
                 <!-- * * * * * * * * * * * * * * *-->
                 <!-- * * SB Forms Contact Form * *-->

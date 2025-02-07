@@ -1,4 +1,3 @@
-<?php include('../../../template/cabecera.php')?>
 <?php include('../../../conexion.php')?>
 <?php
     if($_POST){
